@@ -1,0 +1,6 @@
+[package]
+name = "catout"
+version = "0.1.0"
+authors = ["Tyson Thomas <tyskthomas@gmail.com>"]
+
+[dependencies]

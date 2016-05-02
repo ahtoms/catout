@@ -71,10 +71,11 @@ impl CatOut {
             let clients = clients_clone_stdout;
             loop {
                 match proc_stdout.read_to_string(&mut line) {
-                    Ok(n) => {
+                    Ok(_) => {
                         for c in clients.lock().unwrap().iter_mut() {
                             c.write(&line);
                         }
+                        print!("Data: {}", line);
                     }
                     Err(e) => {
                         println!("Error: {}", e);
@@ -88,7 +89,7 @@ impl CatOut {
             let clients = clients_clone_stderr;
             loop {
                 match proc_stderr.read_to_string(&mut line) {
-                    Ok(n) => {
+                    Ok(_) => {
                         for c in clients.lock().unwrap().iter_mut() {
                             c.write(&line);
                         }
